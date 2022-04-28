@@ -1,15 +1,18 @@
+//Dependencies
 const mysql = require("mysql");
 const inquirer = require("inquirer");
+const cTable = require("console.table");
 
+// Connection-
 const connection = mysql.createConnection({
     host: "localhost",
     port:3306,
-    user: "akimpson",
-    password: "@$$2312oK",
+    user: "root",
+    password: "password",
     database: "employee_tracker_db"
 });
 
-function runSearch() {
+const runSearch = () => {
     inquirer.prompt({
         name: "action",
         type: "list",
@@ -25,3 +28,4 @@ function runSearch() {
             "Quit",
         ]
     })
+}

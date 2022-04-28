@@ -18,14 +18,14 @@ const runSearch = () => {
         type: "list",
         message: "What would you like to do?",
         choices: [
-            "View All Employees",
-            "Add Employee",
-            "Update Employee Role",
-            "View All Roles",
-            "Add Role",
-            "View All Departments",
-            "Add Department",
-            "Quit",
+           "Add Department",
+           "Add Employee", 
+           "Add Role",
+           "Update Employee Role",
+           "View All Roles",
+           "View All Employees",
+           "View All Departments",
+           "Quit",
         ]
     })
 }

@@ -1,31 +1,19 @@
-//Dependencies
-const mysql = require("mysql");
-const inquirer = require("inquirer");
+const express = require("express");
+const PORT = 3001 || process.env;
+const db = require("./db/connection");
+const app = express();
 const cTable = require("console.table");
+// Express middleware
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
-// Connection-
-const connection = mysql.createConnection({
-    host: "localhost",
-    port:2022,
-    user: "root",
-    password: "password",
-    database: "employee_tracker_db"
+// Start server after DB connection
+db.connect((err) => {
+  if (err) throw err;
+  console.log("Database connected.");
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
 });
 
-const runSearch = () => {
-    inquirer.prompt({
-        name: "action",
-        type: "list",
-        message: "What would you like to do?",
-        choices: [
-           "Add Department",
-           "Add Employee", 
-           "Add Role",
-           "Update Employee Role",
-           "View All Roles",
-           "View All Employees",
-           "View All Departments",
-           "Quit",
-        ]
-    })
-}
+//module.exports = db;
